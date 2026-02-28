@@ -18,6 +18,11 @@ from utils.utils import (download_weights, seed_everything, show_config,
                          worker_init_fn)
 from utils.utils_fit import fit_one_epoch
 
+'''
+该文件为本分支运行文件。若想使用原仓库代码，请运行train.py
+'''
+
+
 if __name__ == "__main__":
     #---------------------------------#
     #   Cuda    是否使用Cuda

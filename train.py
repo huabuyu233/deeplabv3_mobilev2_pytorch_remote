@@ -19,6 +19,9 @@ from utils.utils import (download_weights, seed_everything, show_config,
 from utils.utils_fit import fit_one_epoch
 
 '''
+
+该文件为原仓库运行文件。若想使用本分支的代码，请运行train_building.py
+
 训练自己的语义分割模型一定需要注意以下几点：
 1、训练前仔细检查自己的格式是否满足要求，该库要求数据集格式为VOC格式，需要准备好的内容有输入图片和标签
    输入图片为.jpg图片，无需固定大小，传入训练前会自动进行resize。
