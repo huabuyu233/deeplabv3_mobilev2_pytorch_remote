@@ -1,3 +1,4 @@
+from .cbam import CBAM
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -140,8 +141,13 @@ class DeepLab(nn.Module):
         #-----------------------------------------#
         #   ASPP特征提取模块
         #   利用不同膨胀率的膨胀卷积进行特征提取
-        #-----------------------------------------#
+        #-----------------------------------------
         self.aspp = ASPP(dim_in=in_channels, dim_out=256, rate=16//downsample_factor)
+        
+        #-----------------------------------------#
+        #   CBAM注意力机制
+        #-----------------------------------------
+        self.cbam = CBAM(256)
         
         #----------------------------------#
         #   浅层特征边
@@ -175,6 +181,10 @@ class DeepLab(nn.Module):
         #-----------------------------------------#
         low_level_features, x = self.backbone(x)
         x = self.aspp(x)
+        #-----------------------------------------#
+        #   应用CBAM注意力机制
+        #-----------------------------------------
+        x = self.cbam(x)
         low_level_features = self.shortcut_conv(low_level_features)
         
         #-----------------------------------------#
