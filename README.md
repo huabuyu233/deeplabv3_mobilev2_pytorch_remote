@@ -13,6 +13,8 @@
 9. [参考资料 Reference](#Reference)
 
 ## Top News
+**`2026-02`**:**添加Coordinate Attention (CA)注意力机制，优化建筑物识别性能。**  
+
 **`2022-04`**:**支持多GPU训练。**  
 
 **`2022-03`**:**进行大幅度更新、支持step、cos学习率下降法、支持adam、sgd优化器选择、支持学习率根据batch_size自适应调整。**  
@@ -33,6 +35,7 @@ hrnet | https://github.com/bubbliiiing/hrnet-pytorch
 | :-----: | :-----: | :------: | :------: | :------: | 
 | VOC12+SBD | [deeplab_mobilenetv2.pth](https://github.com/bubbliiiing/deeplabv3-plus-pytorch/releases/download/v1.0/deeplab_mobilenetv2.pth) | VOC-Val12 | 512x512| 72.59 | 
 | VOC12+SBD | [deeplab_xception.pth](https://github.com/bubbliiiing/deeplabv3-plus-pytorch/releases/download/v1.0/deeplab_xception.pth) | VOC-Val12 | 512x512| 76.95 | 
+| 建筑物识别数据集 | best_epoch_weights.pth | 验证集 | 320x320| 87.45 | 
 
 ### 所需环境
 torch==1.2.0
