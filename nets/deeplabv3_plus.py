@@ -1,4 +1,4 @@
-from .ca import CoordinateAttention
+from .sga import SpatialGatedAttention
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -145,9 +145,9 @@ class DeepLab(nn.Module):
         self.aspp = ASPP(dim_in=in_channels, dim_out=256, rate=16//downsample_factor)
         
         #-----------------------------------------
-        #   Coordinate Attention注意力机制
+        #   Spatial-Gated Attention注意力机制
         #-----------------------------------------
-        self.ca = CoordinateAttention(256)
+        self.sga = SpatialGatedAttention(256)
         
         #----------------------------------#
         #   浅层特征边
@@ -182,9 +182,9 @@ class DeepLab(nn.Module):
         low_level_features, x = self.backbone(x)
         x = self.aspp(x)
         #-----------------------------------------
-        #   应用Coordinate Attention注意力机制
+        #   应用Spatial-Gated Attention注意力机制
         #-----------------------------------------
-        x = self.ca(x)
+        x = self.sga(x)
         low_level_features = self.shortcut_conv(low_level_features)
         
         #-----------------------------------------#
