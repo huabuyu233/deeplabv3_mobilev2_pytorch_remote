@@ -13,6 +13,11 @@
 9. [参考资料 Reference](#Reference)
 
 ## Top News
+
+**`2026-03`**:**将SGA注意力机制集成至ASPP模块中。**
+
+**`2026-03`**:**该仓库为原仓库分支，原仓库地址为:https://github.com/bubbliiiing/deeplabv3-plus-pytorch.git**  
+
 **`2022-04`**:**支持多GPU训练。**  
 
 **`2022-03`**:**进行大幅度更新、支持step、cos学习率下降法、支持adam、sgd优化器选择、支持学习率根据batch_size自适应调整。**  
@@ -35,12 +40,19 @@ hrnet | https://github.com/bubbliiiing/hrnet-pytorch
 | VOC12+SBD | [deeplab_xception.pth](https://github.com/bubbliiiing/deeplabv3-plus-pytorch/releases/download/v1.0/deeplab_xception.pth) | VOC-Val12 | 512x512| 76.95 | 
 
 ### 所需环境
-torch==1.2.0
+pytorch==1.2.0
+
+英伟达30系显卡需要pytorch==1.7.0
+
+更新款的英伟达显卡pytorch版本需求不清楚。
 
 ### 注意事项
 代码中的deeplab_mobilenetv2.pth和deeplab_xception.pth是基于VOC拓展数据集训练的。训练和预测时注意修改backbone。    
 
 ### 文件下载
+
+本分支已经下载完成训练所需的deeplab_mobilenetv2.pth和deeplab_xception.pth，不必再去百度网盘下载。
+
 训练所需的deeplab_mobilenetv2.pth和deeplab_xception.pth可在百度网盘中下载。     
 链接: https://pan.baidu.com/s/1IQ3XYW-yRWQAy7jxCUHq8Q 提取码: qqq4   
 
