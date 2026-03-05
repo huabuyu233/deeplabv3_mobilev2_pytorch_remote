@@ -28,7 +28,7 @@ if __name__ == "__main__":
     temp_seg = os.listdir(segfilepath)
     total_seg = []
     for seg in temp_seg:
-        if seg.endswith(".png"):
+        if seg.endswith(".png") or seg.endswith(".tif"):
             total_seg.append(seg)
 
     num     = len(total_seg)  
@@ -69,7 +69,7 @@ if __name__ == "__main__":
         name            = total_seg[i]
         png_file_name   = os.path.join(segfilepath, name)
         if not os.path.exists(png_file_name):
-            raise ValueError("未检测到标签图片%s，请查看具体路径下文件是否存在以及后缀是否为png。"%(png_file_name))
+            raise ValueError("未检测到标签图片%s，请查看具体路径下文件是否存在以及后缀是否为png或tif。"%(png_file_name))
         
         png             = np.array(Image.open(png_file_name), np.uint8)
         if len(np.shape(png)) > 2:
@@ -93,6 +93,6 @@ if __name__ == "__main__":
     elif classes_nums[0] > 0 and np.sum(classes_nums[1:]) == 0:
         print("检测到标签中仅仅包含背景像素点，数据格式有误，请仔细检查数据集格式。")
 
-    print("JPEGImages中的图片应当为.jpg文件、SegmentationClass中的图片应当为.png文件。")
+    print("JPEGImages中的图片可以为.jpg、.png或.tif文件、SegmentationClass中的图片可以为.png或.tif文件。")
     print("如果格式有误，参考:")
     print("https://github.com/bubbliiiing/segmentation-format-fix")

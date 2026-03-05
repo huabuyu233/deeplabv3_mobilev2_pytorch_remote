@@ -13,10 +13,10 @@ class SGA(nn.Module):
         super(SGA, self).__init__()
         self.groups = groups
         self.avg_pool = nn.AdaptiveAvgPool2d(1)
-        self.conv = nn.Conv2d(in_channels, in_channels // groups, 1, bias=False)
+        self.conv = nn.Conv2d(in_channels // groups, in_channels // groups, 1, bias=False)
         self.bn = nn.BatchNorm2d(in_channels // groups)
         self.relu = nn.ReLU(inplace=True)
-        self.fc = nn.Conv2d(in_channels // groups, in_channels, 1, bias=False)
+        self.fc = nn.Conv2d(in_channels // groups, in_channels // groups, 1, bias=False)
         self.sigmoid = nn.Sigmoid()
 
     def forward(self, x):

@@ -29,8 +29,25 @@ class DeeplabDataset(Dataset):
         #-------------------------------#
         #   从文件中读取图像
         #-------------------------------#
-        jpg         = Image.open(os.path.join(os.path.join(self.dataset_path, "VOC2007/JPEGImages"), name + ".jpg"))
-        png         = Image.open(os.path.join(os.path.join(self.dataset_path, "VOC2007/SegmentationClass"), name + ".png"))
+        # 尝试不同的图片格式
+        image_path = os.path.join(self.dataset_path, "VOC2007/JPEGImages")
+        for ext in ['.jpg', '.png', '.tif']:
+            img_path = os.path.join(image_path, name + ext)
+            if os.path.exists(img_path):
+                jpg = Image.open(img_path)
+                break
+        else:
+            raise FileNotFoundError(f"No image found for {name} in {image_path}")
+        
+        # 尝试不同的标签格式
+        label_path = os.path.join(self.dataset_path, "VOC2007/SegmentationClass")
+        for ext in ['.png', '.tif']:
+            lbl_path = os.path.join(label_path, name + ext)
+            if os.path.exists(lbl_path):
+                png = Image.open(lbl_path)
+                break
+        else:
+            raise FileNotFoundError(f"No label found for {name} in {label_path}")
         #-------------------------------#
         #   数据增强
         #-------------------------------#

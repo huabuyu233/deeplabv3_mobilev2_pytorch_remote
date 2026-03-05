@@ -49,8 +49,15 @@ if __name__ == "__main__":
 
         print("Get predict result.")
         for image_id in tqdm(image_ids):
-            image_path  = os.path.join(VOCdevkit_path, "VOC2007/JPEGImages/"+image_id+".jpg")
-            image       = Image.open(image_path)
+            # 尝试不同的图片格式
+            image_dir = os.path.join(VOCdevkit_path, "VOC2007/JPEGImages")
+            for ext in ['.jpg', '.png', '.tif']:
+                image_path = os.path.join(image_dir, image_id + ext)
+                if os.path.exists(image_path):
+                    image = Image.open(image_path)
+                    break
+            else:
+                raise FileNotFoundError(f"No image found for {image_id} in {image_dir}")
             image       = deeplab.get_miou_png(image)
             image.save(os.path.join(pred_dir, image_id + ".png"))
         print("Get predict result done.")
