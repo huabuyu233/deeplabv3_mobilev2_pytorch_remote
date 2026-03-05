@@ -19,6 +19,9 @@ from utils.utils import (download_weights, seed_everything, show_config,
 from utils.utils_fit import fit_one_epoch
 
 '''
+
+所有训练参数均基于NVIDIA GeForce RTX 3050 4GB Laptop GPU显卡型号调整。
+
 训练自己的语义分割模型一定需要注意以下几点：
 1、训练前仔细检查自己的格式是否满足要求，该库要求数据集格式为VOC格式，需要准备好的内容有输入图片和标签
    输入图片为.jpg图片，无需固定大小，传入训练前会自动进行resize。
@@ -30,6 +33,8 @@ from utils.utils_fit import fit_one_epoch
    网上常见的数据集总共对输入图片分两类，背景的像素点值为0，目标的像素点值为255。这样的数据集可以正常运行但是预测是没有效果的！
    需要改成，背景的像素点值为0，目标的像素点值为1。
    如果格式有误，参考：https://github.com/bubbliiiing/segmentation-format-fix
+   
+   现已支持tif格式图片。
 
 2、损失值的大小用于判断是否收敛，比较重要的是有收敛的趋势，即验证集损失不断下降，如果验证集损失基本上不改变的话，模型基本上就收敛了。
    损失值的具体大小并没有什么意义，大和小只在于损失的计算方式，并不是接近于0才好。如果想要让损失好看点，可以直接到对应的损失函数里面除上10000。
