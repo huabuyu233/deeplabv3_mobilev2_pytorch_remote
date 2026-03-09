@@ -1,7 +1,9 @@
 ## DeepLabv3+：Encoder-Decoder with Atrous Separable Convolution语义分割模型在Pytorch当中的实现
 ---
 
-## 该GitHub不再更新，后续更新托管于gitee仓库：https://gitee.com/hnylmy/deeplabv3_mobilev2_pytorch_remote.git
+## 该仓库为GitHub仓库分支，原仓库地址为：https://github.com/bubbliiiing/deeplabv3-plus-pytorch.git
+
+
 
 ### 目录
 1. [仓库更新 Top News](#仓库更新)
@@ -15,6 +17,8 @@
 9. [参考资料 Reference](#Reference)
 
 ## Top News
+
+添加了仓库所需conda环境，所需的conda虚拟环境已导出至pytorch-gpu.yml文件中。
 
 **`2026-03`**:**将SGA注意力机制集成至ASPP模块中。**
 
@@ -42,6 +46,11 @@ hrnet | https://github.com/bubbliiiing/hrnet-pytorch
 | VOC12+SBD | [deeplab_xception.pth](https://github.com/bubbliiiing/deeplabv3-plus-pytorch/releases/download/v1.0/deeplab_xception.pth) | VOC-Val12 | 512x512| 76.95 | 
 
 ### 所需环境
+
+
+使用该命令导入conda环境：conda env create -f pytorch-gpu.yml
+
+
 pytorch==1.2.0
 
 英伟达30系显卡需要pytorch==1.7.0
