@@ -22,7 +22,7 @@ if __name__ == "__main__":
     #------------------------------#
     #   分类个数+1、如2+1
     #------------------------------#
-    num_classes     = 6
+    num_classes     = 6         
     #--------------------------------------------#
     #   区分的种类，和json_to_dataset里面的一样
     #--------------------------------------------#
@@ -44,7 +44,7 @@ if __name__ == "__main__":
             os.makedirs(pred_dir)
             
         print("Load model.")
-        deeplab = DeeplabV3()
+        deeplab = DeeplabV3(model_path = "logs/ep100-loss0.191-val_loss0.473.pth")
         print("Load model done.")
 
         print("Get predict result.")
